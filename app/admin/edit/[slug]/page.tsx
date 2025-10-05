@@ -5,15 +5,17 @@ import PostForm from '@/components/PostForm';
 import Link from 'next/link';
 import { use } from 'react';
 
-interface PageProps {
-  params: Promise<{
-    slug: string;
-  }>;
+interface PostData {
+  title: string;
+  content: string;
+  excerpt: string;
+  tags: string[];
+  date: string;
 }
 
 export default function EditPostPage({ params }: PageProps) {
   const { slug } = use(params);
-  const [post, setPost] = useState<any>(null);
+  const [post, setPost] = useState<PostData | null>(null));
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
